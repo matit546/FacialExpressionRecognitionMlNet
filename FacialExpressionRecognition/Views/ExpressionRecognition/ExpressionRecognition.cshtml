@@ -36,42 +36,31 @@
                 <div class="col-sm">
                     @if (ViewBag.Result != null)
                     {
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4 style="color:black">Rozpoznany wyraz twarzy to: @ViewBag.Result.Prediction  </h4>
-                            </div>
-                            <div>
-                                <br />
-                            </div>
-                            <div class="col-md-12">
-                                <h5 style="color:#a50f0f">Zdegustowanie @ViewData["Disgust"]   </h5>
-                            </div>
-                            <div class="col-md-12">
-                                <h5 style="color:#a50f0f">Uśmiech @ViewData["Smile"]   </h5>
-                            </div>
-                            <div class="col-md-12">
-                                <h5 style="color:#a50f0f">Smutek @ViewData["Sad"]   </h5>
-                            </div>
-                            <div class="col-md-12">
-                                <h5 style="color:#a50f0f">Zaskoczenie @ViewData["Surprise"]   </h5>
-                            </div>
-                            <div class="col-md-12">
-                                <h5 style="color:#a50f0f">Gniew @ViewData["Angry"]   </h5>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Rozpoznany wyraz twarzy to: <b>@ViewBag.Result.Prediction</b> </h4>
                         </div>
-                        <hr />
-                        <a class="btn btn-secondary" asp-controller="ExpressionRecognition">Spróbuj ponownie na innym zdjęciu</a>
-                        foreach (var predc in Model.dict)
-                        {
-                <table>
-                    <tr></tr>
-                    <tr></tr>
-                    
-                </table>
-                            <div>
-                                <p>@predc.Value %</p>
-                            </div>
-                        }
+                        <div>
+                            <br />
+                        </div>
+                        <div class="col-md-12"> 
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Wyraz twarzy</th>
+                                    <th>Wynik</th>
+                                </tr>
+
+                                @foreach (var predc in Model.dict)
+                                {
+                                    <tr>
+                                        <td>@predc.Key</td>
+                                        <td>@predc.Value %</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                        <a class="btn btn-secondary" asp-controller="ExpressionRecognition">Spróbuj ponownie na innym zdjęciu</a>                                         
                     }
                 </div>
             </div>

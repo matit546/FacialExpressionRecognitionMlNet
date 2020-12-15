@@ -67,31 +67,14 @@ namespace FacialExpressionRecognition.Controllers
 
 
             ExpressionResult expression = new ExpressionResult();
-            expression.Prediction = stockPredictions.Prediction;
-            
-            for(int i =0; i < stockPredictions.Score.Length; i++)
+            for (int i =0; i < stockPredictions.Score.Length; i++)
             {
                 expression.Score.Add(stockPredictions.Score[i]);
             }
 
             ExpressionResult.GetExpressionName(expression);
-            //  resnet model
-            ViewBag.Result = stockPredictions;
-            ViewData["Angry"] = stockPredictions.Score[0];
-            ViewData["Sad"] = stockPredictions.Score[1];
-            ViewData["Smile"] = stockPredictions.Score[2];
-            ViewData["Surprise"] = stockPredictions.Score[3];
-            ViewData["Disgust"] = stockPredictions.Score[4];
 
-            // inception model
-
-            // ViewBag.Result = stockPredictions;
-            // ViewData["Angry"] = stockPredictions.Score[4];
-            // ViewData["Sad"] = stockPredictions.Score[3];
-            // ViewData["Smile"] = stockPredictions.Score[2];
-            // ViewData["Surprise"] = stockPredictions.Score[0];
-            // ViewData["Disgust"] = stockPredictions.Score[1]; 
-       
+            ViewBag.Result = stockPredictions;     
             return View(expression);
        
            

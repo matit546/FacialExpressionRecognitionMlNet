@@ -7,7 +7,6 @@ namespace FacialExpressionRecognition.Models
 {
     public class ExpressionResult
     {
-        public string Prediction { get; set; }
         public List<float> Score = new List<float>();
 
 
@@ -18,8 +17,8 @@ namespace FacialExpressionRecognition.Models
             string[] FacialExpression = { "Gniew", "Smutek", "Uśmiech", "Zaskoczenie", "Zdegustowanie" };
             for(int i=0; i < ex.Score.Count; i++)
             {
-                float valueTask = float.Parse( string.Format("{0:F2}", ex.Score[i] * 100));
-                ex.dict.Add(FacialExpression[i], valueTask);
+                float value = float.Parse( string.Format("{0:F2}", ex.Score[i] * 100));
+                ex.dict.Add(FacialExpression[i], value);
             }
 
             ex.dict = ex.dict.OrderBy(x => -x.Value).ToDictionary(x => x.Key, x => x.Value);
